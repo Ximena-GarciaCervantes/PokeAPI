@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menú Pokédex</title>
+  <!-- CDN Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-zinc-900 min-h-screen flex flex-col justify-between">
+
+  <!-- HEADER IMPORTADO -->
+  <header class="bg-red-600 border-b border-gray-800">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between">
+        <div class="flex-1 md:flex md:items-center md:gap-12">
+          <a class="block text-teal-600 dark:text-teal-300" href="#">
+            <span class="sr-only">Home</span>
+            <!-- LOGO DE LA APP -->
+            <img src="./assets/img/pokebola.png" alt="pokebola" class="h-12 transition-transform duration-500 ease-in-out hover:scale-125">    
+          </a>
+        </div>
+
+        <div class="md:flex md:items-center md:gap-12">
+          <nav aria-label="Global" class="hidden md:block">
+            <ul class="flex items-center gap-6 text-sm font-semibold">
+              <li>
+                <a
+                  class="text-lg px-1 py-2 text-white hover:bg-red-700 transition-colors"
+                  href="./pages/menu.html"
+                >
+                  MENÚ
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL: Pokédex -->
+  <div class="flex-1 flex items-center justify-center p-6">
+    <main class="w-full max-w-sm bg-red-600 rounded-3xl p-5 shadow-[0_15px_0_0_#991b1b,0_25px_30px_rgba(0,0,0,0.8)] border-4 border-red-800 flex flex-col gap-4 relative overflow-hidden">
+      
+      <!-- Luces e Indicadores icónicos del Anime -->
+      <header class="flex items-start justify-between border-b-4 border-red-800 pb-3">
+        <!-- Luz Principal Azul (Gemma) -->
+        <div class="relative">
+          <div class="w-14 h-14 bg-sky-400 rounded-full border-4 border-white shadow-[inset_-3px_-3px_8px_rgba(0,0,0,0.6)] flex items-center justify-center">
+            <div class="w-4 h-4 bg-white/80 rounded-full absolute top-2 left-2 blur-[1px]"></div>
+          </div>
+        </div>
+
+        <!-- Foquitos (Rojo, Amarillo, Verde) -->
+        <div class="flex gap-2 mt-1">
+          <div class="w-4 h-4 bg-red-400 rounded-full border-2 border-red-900 shadow-inner"></div>
+          <div class="w-4 h-4 bg-yellow-300 rounded-full border-2 border-yellow-800 shadow-inner"></div>
+          <div class="w-4 h-4 bg-emerald-400 rounded-full border-2 border-emerald-900 shadow-inner"></div>
+        </div>
+      </header>
+
+      <!-- MARCO DE LA PANTALLA (Gris Retro) -->
+      <section class="bg-gray-300 rounded-2xl p-4 border-4 border-gray-400 flex flex-col items-center shadow-inner relative">
+        
+        <!-- Foquitos decorativos de la pantalla -->
+        <div class="w-full flex justify-center gap-6 mb-2">
+          <div class="w-2.5 h-2.5 bg-red-500 rounded-full border border-red-800"></div>
+          <div class="w-2.5 h-2.5 bg-red-500 rounded-full border border-red-800"></div>
+        </div>
+
+        <!-- PANTALLA VERDE RETRO (GameBoy Style) -->
+        <div class="w-full bg-emerald-950 rounded-xl p-3 border-4 border-emerald-900 flex flex-col items-center gap-2 shadow-[inset_0_2px_10px_rgba(0,0,0,0.8)]">
+          
+          <!-- Nombre y Número -->
+          <div class="w-full flex justify-between items-center text-emerald-400 font-mono text-sm border-b border-emerald-800/60 pb-1">
+            <span id="nombre-pokemon" class="font-black uppercase tracking-wider">--</span>
+            <span id="id-pokemon" class="font-bold">#000</span>
+
+          </div>
+
+          <!-- Visor de la Imagen -->
+          <div class="w-36 h-36 flex items-center justify-center my-1">
+            <img id="imagen-pokemon" src="" alt="" class="w-32 h-32 object-contain drop-shadow-[0_4px_4px_rgba(0,0,0,0.7)]">
+          </div>
+
+          <!-- Tipos del Pokémon -->
+          <div id="tipos-pokemon" class="px-2 py-0.5 text-[10px] font-bold rounded bg-emerald-900/80 text-emerald-300 border border-emerald-700/50"></div>
+
+        </div>
+
+        <!-- Rejilla de altavoz de la pantalla -->
+        <div class="w-full flex justify-between items-center mt-3 px-2">
+          <div class="w-6 h-6 bg-red-500 rounded-full border-2 border-red-800 flex items-center justify-center">
+            <div class="w-2 h-2 bg-red-800 rounded-full"></div>
+          </div>
+          <!-- Líneas del altavoz -->
+          <div class="flex gap-1">
+            <div class="w-8 h-1 bg-gray-500 rounded-full"></div>
+            <div class="w-8 h-1 bg-gray-500 rounded-full"></div>
+            <div class="w-8 h-1 bg-gray-500 rounded-full"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PANEL DE DATOS FÍSICOS -->
+      <section class="bg-red-700/60 p-3 rounded-xl border-2 border-red-800 grid grid-cols-2 gap-2 text-white font-mono text-xs">
+        <div class="bg-red-900/50 p-2 rounded border border-red-800 text-center">
+          <span class="block text-red-300 font-bold text-[10px]" >ALTURA</span>
+          <span id="altura-pokemon" class="font-bold">--</span>
+        </div>
+        <div class="bg-red-900/50 p-2 rounded border border-red-800 text-center">
+          <span class="block text-red-300 font-bold text-[10px]">PESO</span>
+          <span id="peso-pokemon" class="font-bold">--</span>
+        </div>
+      </section>
+
+      <!-- BARRAS DE ESTADÍSTICAS -->
+      <section class="bg-black/30 p-3 rounded-xl border border-red-800/50 space-y-1.5 font-mono text-[11px] text-white">
+        <!-- HP -->
+        <div class="flex items-center gap-2">
+          <span class="w-8 text-red-300 font-bold">HP</span>
+          <div class="flex-1 bg-red-950 h-2 rounded-full overflow-hidden border border-red-800">
+            <div id="hp-bar" class="bg-red-600 h-full w-0 transition-all duration-300"></div>
+          </div>
+          <span id="hp-val" class="w-6 text-right">--</span>
+        </div>
+        <!-- ATK -->
+        <div class="flex items-center gap-2">
+          <span class="w-8 text-red-300 font-bold">ATK</span>
+          <div class="flex-1 bg-red-950 h-2 rounded-full overflow-hidden border border-red-800">
+            <div id="ataque-bar" class="bg-orange-600 h-full w-0 transition-all duration-300"></div>
+          </div>
+          <span id="atk-val" class="w-6 text-right">--</span>
+        </div>
+        <!-- DEF -->
+        <div class="flex items-center gap-2">
+          <span class="w-8 text-red-300 font-bold">DEF</span>
+          <div class="flex-1 bg-red-950 h-2 rounded-full overflow-hidden border border-red-800">
+            <div id="defensa-bar" class="bg-yellow-400 h-full w-0 transition-all duration-300"></div>
+          </div>
+          <span id="def-val" class="w-6 text-right">--</span>
+        </div>
+      </section>
+
+      <!-- CONTROLES RETRO -->
+      <footer class="flex items-center justify-between pt-1">
+
+        <!-- Campo de búsqueda -->
+        <input 
+          type="text" 
+          id="input-pokemon" 
+          placeholder="Nombre Pokémon" 
+          class="w-40 bg-zinc-800 text-emerald-400 font-mono text-xs p-1.5 rounded-lg border-2 border-zinc-950 focus:outline-none focus:border-sky-400 uppercase placeholder:normal-case placeholder:text-zinc-500"
+        />
+
+        <!-- Botón Mostrar -->
+        <button id="btn-borrar" class="bg-blue-600 hover:bg-blue-500 active:translate-y-1 text-white font-mono text-xs font-bold py-3 px-4 rounded-lg shadow-[0_4px_0_0_#1e3a8a] border-2 border-blue-900 cursor-pointer active:shadow-none transition-all">
+          BORRAR
+        </button>
+
+        <!-- Cruceta (D-Pad) -->
+        <div class="relative w-20 h-20">
+          <div class="absolute top-7 left-0 w-20 h-6 bg-zinc-800 rounded-sm border-2 border-zinc-950 shadow-md"></div>
+          <div class="absolute top-0 left-7 w-6 h-20 bg-zinc-800 rounded-sm border-2 border-zinc-950 shadow-md"></div>
+          <div class="absolute top-7 left-7 w-6 h-6 bg-zinc-800 flex items-center justify-center">
+            <div class="w-2 h-2 rounded-full bg-zinc-900"></div>
+          </div>
+        </div>
+      </footer>
+
+    </main>
+  </div>
+
+  <script src="./assets/script.js"></script>
+</body>
+</html>
